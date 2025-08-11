@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace App\Application\Dtos\User;
+namespace App\Application\Dtos\Riego;
 
 use App\Application\Dtos\Contracts\ArraySerializableDto;
 

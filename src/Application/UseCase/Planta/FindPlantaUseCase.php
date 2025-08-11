@@ -1,11 +1,10 @@
 <?php
 
-namespace App\Application\UseCase\User;
+namespace App\Application\UseCase\Planta;
 
 use App\Application\Dtos\Contracts\ArraySerializableDto;
 use App\Application\UseCase\Contracts\ActionUseCase;
 use App\Domain\Repository\PlantaRepository;
-use App\Domain\Repository\UserRepository;
 
 class FindPlantaUseCase implements ActionUseCase
 {

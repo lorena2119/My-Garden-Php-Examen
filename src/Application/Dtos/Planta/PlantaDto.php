@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace App\Application\Dtos\User;
+namespace App\Application\Dtos\Planta;
 
 use App\Application\Dtos\Contracts\ArraySerializableDto;
 use Respect\Validation\Exceptions\NestedValidationException;
@@ -25,7 +25,6 @@ class PlantaDto implements ArraySerializableDto
     private function validate()
     {
         try {
-            v::intType()->setName('plantaId')->assert((int)$this->args['id']);
             v::stringType()->length(min: 2, max: 100)->setName('nombre_comun')->assert($this->args['nombre_comun']);
             v::stringType()->length(min: 2, max: 100)->setName('familia')->assert($this->args['familia']);
             v::stringType()->length(min: 2, max: 100)->setName('categoria')->assert($this->args['categoria']);

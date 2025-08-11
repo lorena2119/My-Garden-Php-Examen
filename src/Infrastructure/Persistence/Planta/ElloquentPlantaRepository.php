@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App\Infrastructure\Persistence\Planta;
 
+use App\Domain\DomainException\User\PlantNotFoundException;
 use App\Domain\DomainException\User\UserAlreadyExistsException;
 use App\Domain\DomainException\User\UserNotFoundException;
 use App\Domain\Model\Planta\Planta;
@@ -34,7 +35,7 @@ class ElloquentPlantaRepository implements PlantaRepository
         try {
             return Planta::findOrFail($id);
         } catch (ModelNotFoundException $e) {
-            throw new UserNotFoundException();
+            throw new PlantNotFoundException();
         }
     }
 
@@ -65,7 +66,7 @@ class ElloquentPlantaRepository implements PlantaRepository
         try {
             return Planta::findOrFail($category);
         } catch (ModelNotFoundException $e) {
-            throw new UserNotFoundException();
+            throw new PlantNotFoundException();
         }
     }
 

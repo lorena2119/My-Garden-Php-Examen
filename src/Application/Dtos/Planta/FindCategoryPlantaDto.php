@@ -2,13 +2,13 @@
 
 declare(strict_types=1);
 
-namespace App\Application\Dtos\User;
+namespace App\Application\Dtos\Planta;
 
 use App\Application\Dtos\Contracts\ArraySerializableDto;
 use Respect\Validation\Exceptions\NestedValidationException;
 use Respect\Validation\Validator as v;
 
-class FindPlantaDto implements ArraySerializableDto
+class FindCategoryPlantaDto implements ArraySerializableDto
 {
 
     /**
@@ -25,7 +25,7 @@ class FindPlantaDto implements ArraySerializableDto
     private function validate()
     {
         try {
-            v::stringType()->length(min: 2, max: 100)->setName('categoria')->assert($this->args['categoria']);
+            v::stringType()->setName('categoria')->assert($this->args['categoria']);
         } catch (NestedValidationException $e) {
             throw new \InvalidArgumentException($e->getFullMessage());
         }
@@ -37,7 +37,7 @@ class FindPlantaDto implements ArraySerializableDto
     public function toArray(): array
     {
         return [
-            'categoria' =>htmlspecialchars($this->args['categoria']),
+            'categoria' => htmlspecialchars($this->args['categoria']),
         ];
     }
 }

@@ -10,3 +10,9 @@ class UserNotFoundException extends DomainRecordNotFoundException
 {
     public $message = 'El usuario que esta buscando no existe.';
 }
+
+class PlantNotFoundException extends DomainRecordNotFoundException
+{
+    public $message = 'La planta que esta buscando no existe.';
+}
+

@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Application\UseCase\User;
+namespace App\Application\UseCase\Planta;
 
 use App\Application\Dtos\Contracts\ArraySerializableDto;
 use App\Application\UseCase\Contracts\ActionUseCase;

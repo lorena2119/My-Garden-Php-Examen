@@ -1,14 +1,15 @@
 <?php
 
-namespace App\Application\UseCase\User;
+namespace App\Application\UseCase\Riego;
 
 use App\Application\Dtos\Contracts\ArraySerializableDto;
 use App\Application\UseCase\Contracts\ActionUseCase;
+use App\Domain\Repository\RiegoRepository;
 use App\Domain\Repository\UserRepository;
 
-class FindUserUseCase implements ActionUseCase
+class CreateRiegoUseCase implements ActionUseCase
 {
-    public function __construct(private readonly UserRepository $repository) {}
+    public function __construct(private readonly RiegoRepository $repository) {}
 
     /**
      * @param ?ArraySerializableDto $dto
@@ -16,6 +17,6 @@ class FindUserUseCase implements ActionUseCase
      */
     public function __invoke(?ArraySerializableDto $dto = null)
     {
-        return $this->repository->findUserOfId($dto->toArray()['id']);
+        return $this->repository->createRiego($dto->toArray());
     }
 }

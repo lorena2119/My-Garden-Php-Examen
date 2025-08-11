@@ -2,13 +2,13 @@
 
 declare(strict_types=1);
 
-namespace App\Application\Dtos\User;
+namespace App\Application\Dtos\Riego;
 
 use App\Application\Dtos\Contracts\ArraySerializableDto;
 use Respect\Validation\Exceptions\NestedValidationException;
 use Respect\Validation\Validator as v;
 
-class PlantaDto implements ArraySerializableDto
+class RiegoDto implements ArraySerializableDto
 {
 
     /**
@@ -25,10 +25,10 @@ class PlantaDto implements ArraySerializableDto
     private function validate()
     {
         try {
-            v::intType()->setName('plantaId')->assert((int)$this->args['id']);
-            v::stringType()->length(min: 2, max: 100)->setName('nombre_comun')->assert($this->args['nombre_comun']);
-            v::stringType()->length(min: 2, max: 100)->setName('familia')->assert($this->args['familia']);
-            v::stringType()->length(min: 2, max: 100)->setName('categoria')->assert($this->args['categoria']);
+            v::intType()->setName('plantaId')->assert((int)$this->args['id_planta']);
+            v::intType()->setName('frecuencia_riego')->assert($this->args['frecuencia_riego']);
+            v::stringType()->length(min: 10, max: 10)->setName('fecha_riego')->assert($this->args['fecha_riego']);
+            v::stringType()->length(min: 10, max: 10)->setName('proximo_riego')->assert($this->args['proximo_riego']);
         } catch (NestedValidationException $e) {
             throw new \InvalidArgumentException($e->getFullMessage());
         }
@@ -40,9 +40,10 @@ class PlantaDto implements ArraySerializableDto
     public function toArray(): array
     {
         return [
-            'nombre_comun' => htmlspecialchars($this->args['nombre_comun']),
-            'familia' => htmlspecialchars($this->args['familia']),
-            'categoria' => htmlspecialchars($this->args['categoria'])
+            'id_planta' => (int)$this->args['id_planta'],
+            'frecuencia_riego' => (int)($this->args['frecuencia_riego']),
+            'fecha_riego' => htmlspecialchars($this->args['fecha_riego']),
+            'proximo_riego' => htmlspecialchars($this->args['proximo_riego']),
         ];
     }
 }

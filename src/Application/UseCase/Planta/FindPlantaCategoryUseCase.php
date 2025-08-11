@@ -5,9 +5,8 @@ namespace App\Application\UseCase\Planta;
 use App\Application\Dtos\Contracts\ArraySerializableDto;
 use App\Application\UseCase\Contracts\ActionUseCase;
 use App\Domain\Repository\PlantaRepository;
-use App\Domain\Repository\UserRepository;
 
-class GetAllPlantaUseCase implements ActionUseCase
+class FindPlantaCategoryUseCase implements ActionUseCase
 {
     public function __construct(private readonly PlantaRepository $repository) {}
 
@@ -17,6 +16,6 @@ class GetAllPlantaUseCase implements ActionUseCase
      */
     public function __invoke(?ArraySerializableDto $dto = null)
     {
-        return $this->repository->findAll($dto->toArray());
+        return $this->repository->findPlantaOfCategory($dto->toArray()['categoria']);
     }
 }

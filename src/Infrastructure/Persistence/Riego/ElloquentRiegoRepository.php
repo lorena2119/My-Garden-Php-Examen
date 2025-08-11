@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace App\Infrastructure\Persistence\User;
+namespace App\Infrastructure\Persistence\Riego;
 
 use App\Domain\DomainException\User\UserAlreadyExistsException;
 use App\Domain\DomainException\User\UserNotFoundException;
